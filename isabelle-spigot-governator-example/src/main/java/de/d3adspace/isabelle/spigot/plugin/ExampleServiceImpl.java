@@ -1,6 +1,7 @@
 package de.d3adspace.isabelle.spigot.plugin;
 
 import com.google.inject.Scopes;
+import com.netflix.governator.annotations.Configuration;
 import com.netflix.governator.annotations.PreConfiguration;
 import de.d3adspace.isabelle.spigot.governator.annotation.PluginLogger;
 
@@ -27,6 +28,12 @@ public class ExampleServiceImpl implements ExampleService {
     private final Logger logger;
 
     /**
+     * An example message provided via configuration mapping.
+     */
+    @Configuration(value = "example.message", documentation = "A fancy example message.")
+    private String exampleMessage = "I'm a default message.";
+
+    /**
      * Create a new example service instance.
      *
      * @param logger The logger.
@@ -39,7 +46,7 @@ public class ExampleServiceImpl implements ExampleService {
     @Override
     public void executeAwesomeActions() {
 
-        logger.log(Level.INFO, "Hey, I'm the example service!");
+        logger.log(Level.INFO, exampleMessage);
     }
 
     @PreConfiguration

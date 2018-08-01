@@ -31,18 +31,34 @@ import java.util.logging.Level;
  * built and some initial work is done. The real functionality should be initialized using {@link JavaPlugin#onEnable()}
  * and destroy using {@link JavaPlugin#onDisable()}.
  * <p>
- * Mapping the bukkit life cycle methods is easy at all. {@link JavaPlugin#onLoad()} is mapped to
+ * Mapping the bukkit life cycle methods is not easy at all. {@link JavaPlugin#onLoad()} is mapped to
  * {@link IsabelleExtension#bootstrap()}, {@link JavaPlugin#onEnable()} is mapped to {@link IsabelleExtension#start()}
  * and {@link JavaPlugin#onDisable()} will end the lifecycle via {@link IsabelleExtension#tearDown()}.
  * <p>
  * Note: Yes there are some difficulties. The normal life cycle isn't fully compatible, as it cannot be just divided
- * into three pieces, this is a compromise.
+ * into three pieces, this is a compromise, where bootstrap doesn't really do the bootstrap, but only preparations.
  *
  * @author Felix Klauke <info@felix-klauke.de>
  * @see JavaPlugin Bukkits entry type for plugins.
  * @see IsabelleExtension The interface we are adapting.
  */
 public class IsabelleSpigotExtension extends JavaPlugin implements IsabelleExtension, Module, BootstrapModule {
+
+    /**
+     * Message wrapped into an exception that shows that the lifecycle could not be started properly. Mainly used
+     * by {@link #start()}.
+     */
+    private static final String ERROR_WHILE_STARTING_LIFECYCLE = "Error while starting lifecycle.";
+
+    /**
+     * Message that will warn about missing override of {@link #configure(Binder)}.
+     */
+    private static final String MISSING_BINDING_OVERRIDE = "Bindings weren't override. Are you sure you don't need any bindings?";
+
+    /**
+     * Message that will warn about missing override of {@link #configure(BootstrapBinder)}.
+     */
+    private static final String MISSING_BOOTSTRAP_OVERRIDE = "Bootstrap binding wasn't overridden. Are you sure you don't want to use some?";
 
     /**
      * The plugin description file read from the plugin.yml file. Used to determine version and name of the plugin
@@ -84,7 +100,7 @@ public class IsabelleSpigotExtension extends JavaPlugin implements IsabelleExten
         try {
             lifecycleManager.start();
         } catch (Exception e) {
-            getLogger().log(Level.SEVERE, "Error while starting lifecycle.", e);
+            getLogger().log(Level.SEVERE, ERROR_WHILE_STARTING_LIFECYCLE, e);
         }
     }
 
@@ -126,12 +142,12 @@ public class IsabelleSpigotExtension extends JavaPlugin implements IsabelleExten
     @Override
     public void configure(Binder binder) {
 
-        getLogger().log(Level.WARNING, "Configuration wasn't override. Are you sure you don't need any bindings?");
+        getLogger().log(Level.WARNING, MISSING_BINDING_OVERRIDE);
     }
 
     @Override
     public void configure(BootstrapBinder bootstrapBinder) {
 
-        getLogger().log(Level.WARNING, "Bootstrap binding wasn't overriden. Are you sure you don't want to use some?");
+        getLogger().log(Level.WARNING, MISSING_BOOTSTRAP_OVERRIDE);
     }
 }
