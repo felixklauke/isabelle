@@ -30,6 +30,8 @@ public interface IsabelleLifecycleAware {
 
     /**
      * Checks if the lifecycle is currently active.
+     *
+     * @return If the lifecycle is alive.
      */
-    void isAlive();
+    boolean isAlive();
 }
