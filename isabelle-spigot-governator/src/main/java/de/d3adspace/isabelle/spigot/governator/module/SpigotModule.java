@@ -8,6 +8,7 @@ import org.bukkit.Server;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.inventory.ItemFactory;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.ServicesManager;
 import org.bukkit.plugin.messaging.Messenger;
@@ -50,6 +51,7 @@ public class SpigotModule extends AbstractModule {
         bind(Messenger.class).toInstance(plugin.getServer().getMessenger());
         bind(ItemFactory.class).toInstance(plugin.getServer().getItemFactory());
         bind(ConsoleCommandSender.class).toInstance(plugin.getServer().getConsoleSender());
+        bind(PluginDescriptionFile.class).toInstance(plugin.getDescription());
     }
 
     /**

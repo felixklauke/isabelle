@@ -8,6 +8,7 @@ import org.bukkit.Server;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.inventory.ItemFactory;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.ServicesManager;
 import org.bukkit.plugin.messaging.Messenger;
@@ -58,6 +59,8 @@ class SpigotModuleTest {
     private Logger pluginLogger;
     @Mock
     private Logger serverLogger;
+    @Mock
+    private PluginDescriptionFile pluginDescriptionFile;
 
     private Injector injector;
 
@@ -85,11 +88,14 @@ class SpigotModuleTest {
     @Inject
     @ServerLogger
     private Provider<Logger> serverLoggerProvider;
+    @Inject
+    private Provider<PluginDescriptionFile> pluginDescriptionFileProvider;
 
     @BeforeEach
     void setUp() {
 
         when(plugin.getServer()).thenReturn(server);
+        when(plugin.getDescription()).thenReturn(pluginDescriptionFile);
         when(server.getPluginManager()).thenReturn(pluginManager);
         when(server.getScheduler()).thenReturn(bukkitScheduler);
         when(server.getScoreboardManager()).thenReturn(scoreboardManager);
@@ -181,5 +187,12 @@ class SpigotModuleTest {
 
         assertNotNull(serverLoggerProvider, "Server logger provider may not be null.");
         assertEquals(serverLogger, serverLoggerProvider.get(), "Server logger instance differs.");
+    }
+
+    @Test
+    void testProvidePluginDescriptionFile() {
+
+        assertNotNull(pluginDescriptionFileProvider, "Plugin description file provider may not be null.");
+        assertEquals(pluginDescriptionFile, pluginDescriptionFileProvider.get(), "Plugin description file instance differs.");
     }
 }

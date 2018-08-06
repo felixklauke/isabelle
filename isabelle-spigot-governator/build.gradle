@@ -2,6 +2,7 @@ plugins {
 
     id 'com.github.johnrengelman.shadow' version '2.0.4'
     id 'java'
+    id 'maven-publish'
 }
 
 group 'de.d3adspace.isabelle'
@@ -12,6 +13,23 @@ sourceCompatibility = 1.8
 shadowJar {
 
     configurations = [project.configurations.runtime]
+}
+
+publishing {
+    publications {
+        shadow(MavenPublication) { publication ->
+            project.shadow.component(publication)
+        }
+    }
+    repositories {
+        maven {
+            credentials {
+                username = System.getenv('NEXUS_DEPLOYMENT_CREDENTIALS_USERNAME')
+                password = System.getenv('NEXUS_DEPLOYMENT_CREDENTIALS_PASSWORD')
+            }
+            url = System.getenv('NEXUS_DEPLOYMENT_REPOSITORY_URL_SNAPSHOT')
+        }
+    }
 }
 
 repositories {
