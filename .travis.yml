@@ -19,7 +19,16 @@ notifications:
 ### Actual Build Script ###
 ###########################
 script:
-- ./gradlew build check codeCoverageReport publish
+- ./gradlew build check codeCoverageReport
+
+##################
+### Deployment ###
+##################
+deploy:
+  provider: script
+  script: ./gradlew publish
+  on:
+    branch: master
 
 ###################################
 ### Upload Code Coverage Report ###
