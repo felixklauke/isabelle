@@ -19,7 +19,16 @@ notifications:
 ### Actual Build Script ###
 ###########################
 script:
-- ./gradlew build check codeCoverageReport publish
+- bash buildViaTravis.sh
+
+##################
+### Deployment ###
+##################
+deploy:
+  provider: script
+  script: bash installViaTravis.sh
+  on:
+    branch: master
 
 ###################################
 ### Upload Code Coverage Report ###

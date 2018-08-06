@@ -7,7 +7,7 @@ plugins {
 
 group 'de.d3adspace.isabelle'
 
-version '1.0.0'
+version '1.2.0'
 
 sourceCompatibility = 1.8
 
@@ -18,8 +18,10 @@ shadowJar {
 
 publishing {
     publications {
-        shadow(MavenPublication) { publication ->
-            project.shadow.component(publication)
+        mavenJava(MavenPublication) { publication ->
+            from components.java
+
+            artifact shadowJar
         }
     }
     repositories {
