@@ -27,7 +27,10 @@ publishing {
                 username = System.getenv('NEXUS_DEPLOYMENT_CREDENTIALS_USERNAME')
                 password = System.getenv('NEXUS_DEPLOYMENT_CREDENTIALS_PASSWORD')
             }
-            url = System.getenv('NEXUS_DEPLOYMENT_REPOSITORY_URL_SNAPSHOT')
+
+            def releasesRepoUrl = System.getenv('NEXUS_DEPLOYMENT_REPOSITORY_URL_RELEASE')
+            def snapshotsRepoUrl = System.getenv('NEXUS_DEPLOYMENT_REPOSITORY_URL_SNAPSHOT')
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
         }
     }
 }
