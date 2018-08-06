@@ -24,10 +24,10 @@ publishing {
     repositories {
         maven {
             credentials {
-                username System.getenv('NEXUS_DEPLOYMENT_CREDENTIALS_USERNAME')
-                password System.getenv('NEXUS_DEPLOYMENT_CREDENTIALS_PASSWORD')
+                username = System.getenv('NEXUS_DEPLOYMENT_CREDENTIALS_USERNAME')
+                password = System.getenv('NEXUS_DEPLOYMENT_CREDENTIALS_PASSWORD')
             }
-            url System.getenv('NEXUS_DEPLOYMENT_REPOSITORY_URL_SNAPSHOT')
+            url = System.getenv('NEXUS_DEPLOYMENT_REPOSITORY_URL_SNAPSHOT')
         }
     }
 }
