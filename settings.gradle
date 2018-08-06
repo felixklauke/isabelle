@@ -1,2 +1,13 @@
 rootProject.name = 'isabelle'
 
+/**
+ * General core containing definitions and interfaces and non special implementation regarded logic.
+ */
+include 'isabelle-core'
+
+/**
+ * Implementation for spigot plugins featuring governator.
+ */
+include 'isabelle-spigot-governator'
+include 'isabelle-spigot-governator-example'
+

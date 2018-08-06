@@ -1,0 +1,38 @@
+plugins {
+
+    id 'com.github.johnrengelman.shadow' version '2.0.4'
+    id 'java'
+}
+
+group 'de.d3adspace.isabelle'
+version '1.0.0'
+
+
+shadowJar {
+
+    configurations = [project.configurations.runtime]
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+
+    /**
+     * Spigot and OSS Repo.
+     */
+    maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+dependencies {
+
+    /**
+     * Spigot API
+     */
+    compileOnly 'org.spigotmc:spigot-api:1.13-R0.1-SNAPSHOT'
+
+    /**
+     * The core module.
+     */
+    compile project(':isabelle-spigot-governator')
+}

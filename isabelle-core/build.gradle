@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+group 'de.d3adspace.isabelle'
+version '1.0.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+
+}

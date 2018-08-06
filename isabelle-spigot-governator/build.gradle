@@ -1,0 +1,68 @@
+plugins {
+
+    id 'com.github.johnrengelman.shadow' version '2.0.4'
+    id 'java'
+    id 'maven-publish'
+}
+
+group 'de.d3adspace.isabelle'
+version '1.0.0'
+
+sourceCompatibility = 1.8
+
+shadowJar {
+
+    configurations = [project.configurations.runtime]
+}
+
+publishing {
+    publications {
+        shadow(MavenPublication) { publication ->
+            project.shadow.component(publication)
+        }
+    }
+    repositories {
+        maven {
+            credentials {
+                username = System.getenv('NEXUS_DEPLOYMENT_CREDENTIALS_USERNAME')
+                password = System.getenv('NEXUS_DEPLOYMENT_CREDENTIALS_PASSWORD')
+            }
+
+            def releasesRepoUrl = System.getenv('NEXUS_DEPLOYMENT_REPOSITORY_URL_RELEASE')
+            def snapshotsRepoUrl = System.getenv('NEXUS_DEPLOYMENT_REPOSITORY_URL_SNAPSHOT')
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+        }
+    }
+}
+
+repositories {
+
+    /**
+     * Spigot and OSS Repo.
+     */
+    maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+dependencies {
+
+    /**
+     * Governator for dependency injection and life cycle support.
+     */
+    compile group: 'com.netflix.governator', name: 'governator', version: '1.17.5'
+
+    /**
+     * .Spigot API
+     */
+    compileOnly 'org.spigotmc:spigot-api:1.13-R0.1-SNAPSHOT'
+
+    /**
+     * Spigot API for testing.
+     */
+    testCompile 'org.spigotmc:spigot-api:1.13-R0.1-SNAPSHOT'
+
+    /**
+     * The core module.
+     */
+    compile project(':isabelle-core')
+}
