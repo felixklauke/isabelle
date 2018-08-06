@@ -19,14 +19,14 @@ notifications:
 ### Actual Build Script ###
 ###########################
 script:
-- ./buildViaTravis.sh
+- bash buildViaTravis.sh
 
 ##################
 ### Deployment ###
 ##################
 deploy:
   provider: script
-  script: ./installViaTravis.sh
+  script: bash installViaTravis.sh
   on:
     branch: master
 
