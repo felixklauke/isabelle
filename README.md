@@ -4,8 +4,8 @@ Integrating minecraft spigot servers plugin lifecycle into Netflix' Governators 
 # Status
 |             	| Build Status                                                                                                                                              	| Test Code Coverage                                                                                                                                               	|
 |-------------	|-----------------------------------------------------------------------------------------------------------------------------------------------------------	|------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| Master      	| [![Build Status](https://travis-ci.org/FelixKlauke/isabelle.svg?branch=dev)](https://travis-ci.org/FelixKlauke/isabelle) 	| [![codecov](https://codecov.io/gh/FelixKlauke/isabelle/branch/master/graph/badge.svg)](https://codecov.io/gh/FelixKlauke/isabelle) 	|
-| Development 	| [![Build Status](https://travis-ci.org/FelixKlauke/isabelle.svg?branch=master)](https://travis-ci.org/FelixKlauke/isabelle)    	| [![codecov](https://codecov.io/gh/FelixKlauke/isabelle/branch/dev/graph/badge.svg)](https://codecov.io/gh/FelixKlauke/isabelle)    	|
+| Master      	| [![Build Status](https://travis-ci.org/FelixKlauke/isabelle.svg?branch=master)](https://travis-ci.org/FelixKlauke/isabelle) 	| [![codecov](https://codecov.io/gh/FelixKlauke/isabelle/branch/master/graph/badge.svg)](https://codecov.io/gh/FelixKlauke/isabelle) 	|
+| Development 	| [![Build Status](https://travis-ci.org/FelixKlauke/isabelle.svg?branch=dev)](https://travis-ci.org/FelixKlauke/isabelle)    	| [![codecov](https://codecov.io/gh/FelixKlauke/isabelle/branch/dev/graph/badge.svg)](https://codecov.io/gh/FelixKlauke/isabelle)    	|
 
 # Maven & Gradle
 
