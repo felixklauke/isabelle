@@ -1,12 +1,33 @@
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
 group 'de.d3adspace.isabelle'
 
-version '1.0.0'
+version '1.2.0'
 
 sourceCompatibility = 1.8
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) { publication ->
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            credentials {
+                username = System.getenv('NEXUS_DEPLOYMENT_CREDENTIALS_USERNAME')
+                password = System.getenv('NEXUS_DEPLOYMENT_CREDENTIALS_PASSWORD')
+            }
+
+            def releasesRepoUrl = System.getenv('NEXUS_DEPLOYMENT_REPOSITORY_URL_RELEASE')
+            def snapshotsRepoUrl = System.getenv('NEXUS_DEPLOYMENT_REPOSITORY_URL_SNAPSHOT')
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+        }
+    }
+}
 
 repositories {
     mavenCentral()
