@@ -39,3 +39,62 @@ dependencies {
     implementation 'de.d3adspace.isabelle:isabelle-spigot-governator:1.2.0'
 }
 ```
+
+# How it works
+Isabelle provides a single endpoint class called `IsabelleSpigotExtension`
+(`de.d3adspace.isabelle.spigot.governator.IsabelleSpigotExtension`). Instead of using the well known `JavaPlugin` you
+just have to extend our class and the magic begins. You can take a look at
+https://github.com/Isariel/laura/blob/dev/spigot/src/main/java/de/d3adspace/laura/spigot/extension/LauraSpigotExtension.java
+for a full featured example but you can also do a quick start with our internal example.
+
+**Basic structure**:
+```java
+package de.d3adspace.isabelle.spigot.plugin;
+
+import com.google.inject.Binder;
+import com.netflix.governator.annotations.PreConfiguration;
+import de.d3adspace.isabelle.spigot.governator.IsabelleSpigotExtension;
+import de.d3adspace.isabelle.spigot.plugin.module.ExampleModule;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.inject.Inject;
+import java.util.logging.Level;
+
+/**
+ * @author Felix Klauke <info@felix-klauke.de>
+ */
+public class ExamplePlugin extends IsabelleSpigotExtension {
+
+    @Inject
+    private ExampleService exampleService;
+
+    @PreConfiguration
+    public void onPreConfiguration() {
+
+        getLogger().log(Level.INFO, "Entering pre configuration phase.");
+    }
+
+    @PostConstruct
+    public void onPostConstruct() {
+        exampleService.executeAwesomeActions();
+
+        getLogger().log(Level.INFO, "Entering post construction phase.");
+    }
+
+    @PreDestroy
+    public void onPreDestroy() {
+
+        getLogger().log(Level.INFO, "Entering pre deconstruction phase.");
+    }
+
+    @Override
+    public void configure(Binder binder) {
+
+        binder.install(new ExampleModule());
+    }
+}
+```
+
+You can find the corresponding example source here:
+https://github.com/FelixKlauke/isabelle/blob/dev/isabelle-spigot-governator-example/src/main/java/de/d3adspace/isabelle/spigot/plugin/ExamplePlugin.java
