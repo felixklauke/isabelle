@@ -51,29 +51,16 @@ for a full featured example but you can also do a quick start with our internal 
 ```java
 package de.d3adspace.isabelle.spigot.plugin;
 
-import com.google.inject.Binder;
-import com.netflix.governator.annotations.PreConfiguration;
 import de.d3adspace.isabelle.spigot.governator.IsabelleSpigotExtension;
-import de.d3adspace.isabelle.spigot.plugin.module.ExampleModule;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.inject.Inject;
 import java.util.logging.Level;
 
 /**
  * @author Felix Klauke <info@felix-klauke.de>
  */
 public class ExamplePlugin extends IsabelleSpigotExtension {
-
-    @Inject
-    private ExampleService exampleService;
-
-    @PreConfiguration
-    public void onPreConfiguration() {
-
-        getLogger().log(Level.INFO, "Entering pre configuration phase.");
-    }
 
     @PostConstruct
     public void onPostConstruct() {
@@ -87,14 +74,12 @@ public class ExamplePlugin extends IsabelleSpigotExtension {
 
         getLogger().log(Level.INFO, "Entering pre deconstruction phase.");
     }
-
-    @Override
-    public void configure(Binder binder) {
-
-        binder.install(new ExampleModule());
-    }
 }
 ```
 
-You can find the corresponding example source here:
+You can find the corresponding full example source here:
 https://github.com/FelixKlauke/isabelle/blob/dev/isabelle-spigot-governator-example/src/main/java/de/d3adspace/isabelle/spigot/plugin/ExamplePlugin.java
+
+**Depdendency Injection**:
+As we use Governator and Guice under the hood we have a powerful dependency injection mechanism. The previous examp
+
