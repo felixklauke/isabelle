@@ -81,5 +81,5 @@ You can find the corresponding full example source here:
 https://github.com/FelixKlauke/isabelle/blob/dev/isabelle-spigot-governator-example/src/main/java/de/d3adspace/isabelle/spigot/plugin/ExamplePlugin.java
 
 **Depdendency Injection**:
-As we use Governator and Guice under the hood we have a powerful dependency injection mechanism. The previous examp
+As we use Governator and Guice under the hood we have a powerful dependency injection mechanism.
 
