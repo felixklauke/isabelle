@@ -21,15 +21,6 @@ notifications:
 script:
 - bash buildViaTravis.sh
 
-##################
-### Deployment ###
-##################
-deploy:
-  provider: script
-  script: bash installViaTravis.sh
-  on:
-    branch: master
-
 ###################################
 ### Upload Code Coverage Report ###
 ###################################
