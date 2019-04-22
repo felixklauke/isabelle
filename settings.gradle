@@ -10,5 +10,4 @@ include 'isabelle-core'
  */
 include 'isabelle-spigot-governator'
 include 'isabelle-spigot-governator-example'
-include 'isabelle-spigot-hk2'
 
