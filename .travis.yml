@@ -1,28 +1,46 @@
-######################################
-### Configure programming language ###
-######################################
+################
+### Language ###
+################
 language: java
 
-##################################
-### Make sure using Oracle JDK ###
-##################################
+###########
+### JDK ###
+###########
 jdk:
 - oraclejdk8
 
-###################################
-### Disable Email notifications ###
-###################################
+#####################
+### Notifications ###
+#####################
 notifications:
   email: false
 
-###########################
-### Actual Build Script ###
-###########################
+####################
+### Build Script ###
+####################
 script:
 - bash buildViaTravis.sh
 
-###################################
-### Upload Code Coverage Report ###
-###################################
+#################
+### Follow up ###
+#################
 after_success:
 - bash <(curl -s https://codecov.io/bash)
+
+##################
+### Deployment ###
+##################
+deploy:
+  provider: script
+  script: ./gradlew publish
+  on:
+    tags: true
+    branch: master
+
+###################
+### Environment ###
+###################
+env:
+  global:
+  - secure: tmvBAvgPwaGp/IB97SripneSGYCXMBlqktfHA87Nruz4CxqQS/86Dd2XtTjmkc0/7We5vdNkTHBCI65TBi4MTJnWH9+CFI3AkYny7APd+uTIpFHT83P1XlGmAprPUgl7/o5V35ulPLRmCDyTgKfq7uXNsFW5m4ZjWe96z4L7ic82oAUEyGD42SgweGlb+RhSSeMIBsw6hrf/AtEtNwwW8WZ5Mwt+2tkaXAPTCsMx/VoLRvoTEVKyzZOStnmTdt+22vLBL6BwfOVkNLNLZyy3NEWp7VkoTBvy1JcDgiBNT6jCXARMTSddisUowXy4WelSHDSP5wA0PCs8Jm+2PUC9I669qCUIBrDjfSMrfumdcuws9t+X/d/PlQ+ZVB1/pxhQx48ovGnQZnzUXwGaA2igKp52Em3Ex2MtJZBqumjTiTgXus1SJjJjXqXLG45vqVt7TXd3RGZR16fzkoKov3VUnrjysMIqohimWsOYhDQAk8iyuqdCYX443B0Eec6rdd7U98zEmUAzfDteiHWR3BfwAMGF1nNGZbDHrL6zkswCw7aVUEsZOej3ycsX+WqGU4otNzWCm+WIK9qXpyupFVDCePEBh5wQ7ND0uyMWzkBBH1voKD8SDIHhn8DYaDnz0YTlYl6ezTYmCk0TU/oo3L06I7fg9qHialbUFN6uK+ZhR7s=
+  - secure: noFMlkK/o4u3QgqrD04NoigJPB1zcLHFylmUjn34+iMwxbGEDnrNV2IaGnIPIzYiXsXOK3eGL6pcR9E4H2GC/V2H/cpnLxBnckPwkOJ+Ql57HA0ueFmlgFRUXSk0LnOE0LnjLn2OYCL4ZBIdPDDLpOvbQI1XkONipdROCeKMykASv03YTmh6VoXLSMJnd0KT0CDf2gbA2tAXpGqlKZ+r3CWuLxf2WWZquEXprIbPAJZUy9vOA4gIOVstcC9tJTiJQvR+Xi7lzgl2uJ+zXMNVJ1Sj3nkh/lemgWtANI8UPfVnHSA4nMSbMwUdYHIFIgO/5fxW+b/IwFt3JJ4Z87OUD0YDzQMCC4qQdwtoyK5NfBFlm9svxc1thHfzgjCFiVw9Swn68mMI6P3GzAaLUkAKbhCdDXBuTucjVMcvyYKjLb5ckMYIB3yrzBvmLgpNbXw+rpPIyZIduGQ63NtMjR3G8NT67kFMpxNee4HRjO190Uk0Ocpz9Q2lgQuP8cugvIgUTwsdOTZ+u7gq4P6yiLyJv2dQpnuCg+mdBGet6lHn3xsobjRbu2eBTQcN5WpjLt4gWR3GEy3xJR6Jn58BFmCYg9vlr/iTStBUsK5HUUaynLR4qWMXJ0D58iM6ztSnON1Hc0u2oXA7AF3VB7R75nsYCvXeQMjuwghgZkRYc8BTR/o=
