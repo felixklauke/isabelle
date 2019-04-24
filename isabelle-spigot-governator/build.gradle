@@ -27,12 +27,12 @@ publishing {
     repositories {
         maven {
             credentials {
-                username = System.getenv('NEXUS_DEPLOYMENT_CREDENTIALS_USERNAME')
-                password = System.getenv('NEXUS_DEPLOYMENT_CREDENTIALS_PASSWORD')
+                username = System.getenv('NEXUS_USERNAME')
+                password = System.getenv('NEXUS_PASSWORD')
             }
 
-            def releasesRepoUrl = System.getenv('NEXUS_DEPLOYMENT_REPOSITORY_URL_RELEASE')
-            def snapshotsRepoUrl = System.getenv('NEXUS_DEPLOYMENT_REPOSITORY_URL_SNAPSHOT')
+            def releasesRepoUrl = 'https://repository.klauke-enterprises.com/repository/maven-releases/'
+            def snapshotsRepoUrl = 'https://repository.klauke-enterprises.com/repository/maven-snapshots/'
             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
         }
     }
