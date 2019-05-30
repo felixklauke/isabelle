@@ -51,11 +51,6 @@ public class IsabelleSpigotExtension extends AbstractSpigotExtension implements 
     private static final String ERROR_WHILE_STARTING_LIFECYCLE = "Error while starting lifecycle.";
 
     /**
-     * Message that will warn about missing override of {@link #configure(Binder)}.
-     */
-    private static final String MISSING_BINDING_OVERRIDE = "Bindings weren't override. Are you sure you don't need any bindings?";
-
-    /**
      * Message that will warn about missing override of {@link #configure(BootstrapBinder)}.
      */
     private static final String MISSING_BOOTSTRAP_OVERRIDE = "Bootstrap binding wasn't overridden. Are you sure you don't want to use some?";
@@ -105,12 +100,6 @@ public class IsabelleSpigotExtension extends AbstractSpigotExtension implements 
     public boolean isAlive() {
 
         return lifecycleManager != null && lifecycleManager.hasStarted() && isEnabled();
-    }
-
-    @Override
-    public void configure(Binder binder) {
-
-        getLogger().log(Level.WARNING, MISSING_BINDING_OVERRIDE);
     }
 
     @Override

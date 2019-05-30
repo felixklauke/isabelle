@@ -1,19 +1,18 @@
 plugins {
-
     id 'com.github.johnrengelman.shadow' version '2.0.4'
-    id 'java'
 }
-
-group 'de.d3adspace.isabelle'
-
-version '1.2.0'
 
 shadowJar {
 
     configurations = [project.configurations.runtime]
 }
 
+group 'de.d3adspace.isabelle'
+version '1.0.0'
+
 repositories {
+    maven { url = "https://repository.klauke-enterprises.com/repository/maven-releases/" }
+    maven { url = "https://repository.klauke-enterprises.com/repository/maven-snapshots/" }
 
     /**
      * Spigot and OSS Repo.
@@ -29,14 +28,11 @@ dependencies {
      */
     compileOnly 'org.spigotmc:spigot-api:1.13.2-R0.1-SNAPSHOT'
     testCompile 'org.spigotmc:spigot-api:1.13.2-R0.1-SNAPSHOT'
-    
-    /**
-     * Governator for dependency injection and life cycle support.
-     */
-    compile group: 'com.netflix.governator', name: 'governator', version: '1.17.5'
 
     /**
      * The core module.
      */
     compile project(':isabelle-spigot')
+
+    compile group: 'de.d3adspace.theresa', name: 'theresa-core', version: '1.0.0'
 }
