@@ -8,17 +8,18 @@ import de.d3adspace.theresa.core.TheresaFactory;
 
 public abstract class IsabelleSpigotExtension extends AbstractSpigotExtension implements IsabelleExtension, Module {
 
-    private final Theresa theresa = TheresaFactory.create(this);
+    private Theresa theresa;
 
     @Override
     public void bootstrap() {
-
+        theresa = TheresaFactory.create(this);
     }
 
     @Override
     public void start() {
 
         theresa.startLifeCycle();
+        theresa.injectMembers(this);
     }
 
     @Override
