@@ -19,7 +19,9 @@ notifications:
 ### Build Script ###
 ####################
 script:
-- bash buildViaTravis.sh
+- ./gradlew build
+- ./gradlew check
+- ./gradlew codeCoverageReport
 
 #################
 ### Follow up ###
