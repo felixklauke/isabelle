@@ -14,8 +14,6 @@ shadowJar {
     configurations = [project.configurations.runtime]
 }
 
-sourceCompatibility = 1.8
-
 repositories {
 
     /**

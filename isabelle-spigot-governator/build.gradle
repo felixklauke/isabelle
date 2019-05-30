@@ -8,8 +8,6 @@ group 'de.d3adspace.isabelle'
 
 version '1.2.0'
 
-sourceCompatibility = 1.8
-
 shadowJar {
 
     configurations = [project.configurations.runtime]
