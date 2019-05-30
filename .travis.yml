@@ -22,6 +22,7 @@ script:
 - ./gradlew build
 - ./gradlew check
 - ./gradlew codeCoverageReport
+- ./gradlew sonarqube -Dsonar.host.url=$SONAR_URL -Dsonar.projectKey=$SONAR_PROJECT_KEY -Dsonar.login=$SONAR_TOKEN
 
 #################
 ### Follow up ###
@@ -44,5 +45,8 @@ deploy:
 ###################
 env:
   global:
+    - SONAR_URL=https://sonar.klauke-enterprises.com
+    - SONAR_PROJECT_KEY=isabelle
     - secure: PvnvFxwnAet0o1fsKIK1qqnct2zOaABHVbcgSseJ2KECyhhcgyR+IB/X4XK958/CM6x2FL9Jag+skFI512QHDgoSIkXkxCwLDzwoeQ855JZTkcSmKIESLcxM0gile3sWnHoDKpCz5b6BfDYpTARShylp0vCi+/om40xFjabhy+MP39S3sWCgz45lmhUL1b1XJHhJ6siiQ68VrRHU0cEw382Tzum+zH3pGgv6Lr7U0QQ73HnNehAoVP/+aZdjL3C58jx8jq1m4RiYYsmUS0t5Zo7ebiG2yGqPpky9m02x3cSCRdGcnViWlBO/opDA/VR4CKVX91CT1NUAfElju7NTqZfb2qn0JzCl1I0psZuumTqaOHjxDw5J8ZZ1+21Hwu2S1F23kT36cmUARqo9tDl5MnGJHjXUyXexM9EDbNWcOizySo8SnayOKY1WPHnr/SdDOEziN6WGglkce5SDsckdXOMczjFtiHshuQIu2cltEO8fDTBhVczjEuKL/9zK4yneVAjyew1lZGGl9UcyUmHaR+SdwtK3NarKQAB6X54RacMZOtGJKP3LVJCycjjPHAnAB3Pm61Inaslk9E/V69HmeVMHSBB4TxskRXoWR2g9porRlHiwmmiPQFDZLVtcntFhGuAPLtkGY17Vi4fIKESJWXNj9yHhGCvUoM5LUn+eX5I=
     - secure: 1TsJouJ1SBYnWCP95piBi1oH6ilr/wmW+1scFSnogGDl3HFRG1ROse7BLTcPb+BT2dAcrms6RvN4qHPfZfFYKYOPjGPUxJruZlzeaH6H52e071CCL+hqnMRkYAtp+CmuCr4BUsXBFbbpBFKgmDpMF2mwyb5MYqD1/YRiPDugrn+S2XovfsLGmGhotH4bmcypWTgw5F82YOn0BI0Xb8tcs2VnEvfFLgTAXz/Tyz6x+upTcF2gYUR1ceYxv+Bkw2ncF2dYj9bjY2j7HBGqfZEADFWgz+fx9QCZqzC7ZYJAgeo6itoeJXi/hJnsLN7FJrygMDt4q/Xul+agb6AEqdmuDoBhkcHqKOBFpMg/fMWcq7N29E0C5h2n5FdMu7boSHEJTBaAJv/5UYgS1Y2c3ng7LykbixR/TN28gN5qy6X+/gnv46fCmhPzYY6eYs8L/flAbD7hGofs+lyDa+gk/RFC8kXrx06hIiUb7NpzbwmnvF/4y1nDcYxgwj4o7dak8OA2Yb/kkfSd7dGwGFxA8uV2w8BhLC+NFXOTPruhhuLzXkE2WqIu783Ts3qzCxO59dS2jp3XyEtjwgOH5/7iT5zLOTtkjyci1dUhhxuvkF6njkKibU6dZj20IPiFHR3evzUkyTshhe3Wm+S2a+N5BhatDhvJ1jG8qZGq77V9btJMJzI=
+    - secure: llNcH+/a8l+UGrelkO7MIJIyL4FlZ0xV1yKjMWXOWVshaJYDMy9AWA0z7bamirEUGLxnWuBvUD/ULuCeGX7qDsT7V4+0pONBgTqGjW9sPeNZpGc3CJvhQqti875PVTfHwoi5NMdnWZMnDMpVeZvphd+iJBUWfvBWyEbXZP4OSp6/hZxAwRTSvOH18Daj6U8sIzXsa44NWAzUvI6BYO8ZU5t04oDntdFhhI5CIoDUtPZ+Jn5F3CE2zStm9Q+M5Z/5KmdNWu7lYAC//7lqHur7inAMLtdCSwpHlx76N5Vw7KWQglIseYayqTHyld1Gz7NpvMKzqz0HLVG5qmAMDhF1oXmPvDWuUYVuYalHK5BRhJ1LYR8WFGRXyuYjr0xi04EhZHdqeBuHLkQZlFdXVmmcKAc8dB3PJYbFN5Y14PiLfPtGV+Car65T/wmehAUrliloreaaxZBGN/5JFwWC7kDyWYthhudUedNprPnYzdxOrbrhrPX1eAULT1pHJNcbygR5CcD4qKtTAuHyYhJBNuxgLOZjog2jDpwMbFg7UCn4mg01Rt8DXXl+5xoHXLn/ixo2jSm90XttuM16VNLXD4x7JhWYqsop67nHMuSCA3U6WYPsC1l/L7BvJ6MrUYGqpqQKyTZR9mZ2++uj5PyCwGpJpoZJIbi5SSmk9JaIOkOos4I=
