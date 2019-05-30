@@ -2,7 +2,6 @@ plugins {
 
     id 'com.github.johnrengelman.shadow' version '2.0.4'
     id 'java'
-    id 'maven-publish'
 }
 
 group 'de.d3adspace.isabelle'
@@ -14,28 +13,6 @@ sourceCompatibility = 1.8
 shadowJar {
 
     configurations = [project.configurations.runtime]
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) { publication ->
-            from components.java
-
-            artifact shadowJar
-        }
-    }
-    repositories {
-        maven {
-            credentials {
-                username = System.getenv('NEXUS_USERNAME')
-                password = System.getenv('NEXUS_PASSWORD')
-            }
-
-            def releasesRepoUrl = 'https://repository.klauke-enterprises.com/repository/maven-releases/'
-            def snapshotsRepoUrl = 'https://repository.klauke-enterprises.com/repository/maven-snapshots/'
-            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
-        }
-    }
 }
 
 repositories {
@@ -63,5 +40,5 @@ dependencies {
     /**
      * The core module.
      */
-    compile project(':isabelle-core')
+    compile project(':isabelle-spigot')
 }

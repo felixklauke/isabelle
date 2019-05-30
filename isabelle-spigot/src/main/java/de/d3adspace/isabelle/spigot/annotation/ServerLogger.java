@@ -1,6 +1,5 @@
-package de.d3adspace.isabelle.spigot.governator.annotation;
+package de.d3adspace.isabelle.spigot.annotation;
 
-import de.d3adspace.isabelle.spigot.governator.module.SpigotModule;
 import org.bukkit.Bukkit;
 
 import javax.inject.Qualifier;
@@ -14,7 +13,6 @@ import java.lang.annotation.Target;
  * {@link Bukkit#getLogger()}.
  *
  * @author Felix Klauke <info@felix-klauke.de>
- * @see SpigotModule The module this annotation is bound in.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD})

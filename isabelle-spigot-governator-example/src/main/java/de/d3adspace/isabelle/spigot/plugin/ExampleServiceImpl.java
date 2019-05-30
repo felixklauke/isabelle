@@ -3,7 +3,7 @@ package de.d3adspace.isabelle.spigot.plugin;
 import com.google.inject.Scopes;
 import com.netflix.governator.annotations.Configuration;
 import com.netflix.governator.annotations.PreConfiguration;
-import de.d3adspace.isabelle.spigot.governator.annotation.PluginLogger;
+import de.d3adspace.isabelle.spigot.annotation.PluginLogger;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

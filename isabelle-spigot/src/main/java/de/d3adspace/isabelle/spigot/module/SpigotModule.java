@@ -1,9 +1,9 @@
-package de.d3adspace.isabelle.spigot.governator.module;
+package de.d3adspace.isabelle.spigot.module;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
-import de.d3adspace.isabelle.spigot.governator.annotation.PluginLogger;
-import de.d3adspace.isabelle.spigot.governator.annotation.ServerLogger;
+import de.d3adspace.isabelle.spigot.annotation.PluginLogger;
+import de.d3adspace.isabelle.spigot.annotation.ServerLogger;
 import org.bukkit.Server;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.inventory.ItemFactory;

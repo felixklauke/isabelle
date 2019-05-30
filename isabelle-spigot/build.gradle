@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group 'de.d3adspace.isabelle'
+version '1.0.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+
+    /**
+     * Spigot and OSS Repo.
+     */
+    maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+dependencies {
+
+    /**
+     * Spigot API
+     */
+    compileOnly 'org.spigotmc:spigot-api:1.13.2-R0.1-SNAPSHOT'
+    testCompile 'org.spigotmc:spigot-api:1.13.2-R0.1-SNAPSHOT'
+
+    /**
+     * GOogle guice
+     */
+    compile group: 'com.google.inject', name: 'guice', version: '4.2.2'
+
+    /**
+     * The core module.
+     */
+    compile project(':isabelle-core')
+}

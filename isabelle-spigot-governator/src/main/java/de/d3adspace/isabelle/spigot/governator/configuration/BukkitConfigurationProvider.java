@@ -4,7 +4,7 @@ import com.netflix.governator.configuration.ConfigurationKey;
 import com.netflix.governator.configuration.ConfigurationProvider;
 import com.netflix.governator.configuration.DefaultConfigurationProvider;
 import com.netflix.governator.configuration.Property;
-import de.d3adspace.isabelle.spigot.governator.annotation.PluginConfig;
+import de.d3adspace.isabelle.spigot.annotation.PluginConfig;
 import de.d3adspace.isabelle.spigot.governator.module.SpigotBootstrapModule;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.FileConfiguration;

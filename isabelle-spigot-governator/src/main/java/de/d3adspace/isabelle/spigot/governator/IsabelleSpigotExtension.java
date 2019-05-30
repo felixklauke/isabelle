@@ -8,10 +8,10 @@ import com.netflix.governator.guice.BootstrapModule;
 import com.netflix.governator.guice.LifecycleInjector;
 import com.netflix.governator.lifecycle.LifecycleManager;
 import de.d3adspace.isabelle.core.extension.IsabelleExtension;
+import de.d3adspace.isabelle.spigot.AbstractSpigotExtension;
 import de.d3adspace.isabelle.spigot.governator.module.SpigotBootstrapModule;
-import de.d3adspace.isabelle.spigot.governator.module.SpigotModule;
+import de.d3adspace.isabelle.spigot.module.SpigotModule;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
@@ -42,7 +42,7 @@ import java.util.logging.Level;
  * @see JavaPlugin Bukkits entry type for plugins.
  * @see IsabelleExtension The interface we are adapting.
  */
-public class IsabelleSpigotExtension extends JavaPlugin implements IsabelleExtension, Module, BootstrapModule {
+public class IsabelleSpigotExtension extends AbstractSpigotExtension implements IsabelleExtension, Module, BootstrapModule {
 
     /**
      * Message wrapped into an exception that shows that the lifecycle could not be started properly. Mainly used
@@ -61,12 +61,6 @@ public class IsabelleSpigotExtension extends JavaPlugin implements IsabelleExten
     private static final String MISSING_BOOTSTRAP_OVERRIDE = "Bootstrap binding wasn't overridden. Are you sure you don't want to use some?";
 
     /**
-     * The plugin description file read from the plugin.yml file. Used to determine version and name of the plugin
-     * we are currently managing.
-     */
-    private final PluginDescriptionFile pluginDescriptionFile = getDescription();
-
-    /**
      * Governators life cycle injector used to create {@link Injector}s and manage some governator related stuff.
      */
     private LifecycleInjector lifecycleInjector;
@@ -75,12 +69,6 @@ public class IsabelleSpigotExtension extends JavaPlugin implements IsabelleExten
      * Governators life cycle manager needed for mapping the lifecycle methods.
      */
     private LifecycleManager lifecycleManager;
-
-    @Override
-    public String getVersion() {
-
-        return pluginDescriptionFile.getVersion();
-    }
 
     @Override
     public void bootstrap() {
@@ -102,6 +90,9 @@ public class IsabelleSpigotExtension extends JavaPlugin implements IsabelleExten
         } catch (Exception e) {
             getLogger().log(Level.SEVERE, ERROR_WHILE_STARTING_LIFECYCLE, e);
         }
+
+        Injector injector = lifecycleInjector.createInjector(this);
+        injector.injectMembers(this);
     }
 
     @Override
@@ -114,29 +105,6 @@ public class IsabelleSpigotExtension extends JavaPlugin implements IsabelleExten
     public boolean isAlive() {
 
         return lifecycleManager != null && lifecycleManager.hasStarted() && isEnabled();
-    }
-
-    @Override
-    public void onLoad() {
-
-        bootstrap();
-    }
-
-    @Override
-    public void onDisable() {
-
-        tearDown();
-    }
-
-    @Override
-    public void onEnable() {
-        saveDefaultConfig();
-        reloadConfig();
-
-        start();
-
-        Injector injector = lifecycleInjector.createInjector(this);
-        injector.injectMembers(this);
     }
 
     @Override

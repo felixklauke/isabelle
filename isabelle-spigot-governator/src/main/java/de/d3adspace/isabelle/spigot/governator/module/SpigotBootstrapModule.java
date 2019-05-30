@@ -2,9 +2,9 @@ package de.d3adspace.isabelle.spigot.governator.module;
 
 import com.netflix.governator.guice.BootstrapBinder;
 import com.netflix.governator.guice.BootstrapModule;
-import de.d3adspace.isabelle.spigot.governator.IsabelleSpigotExtension;
-import de.d3adspace.isabelle.spigot.governator.annotation.PluginConfig;
 import de.d3adspace.isabelle.spigot.governator.configuration.BukkitConfigurationProvider;
+import de.d3adspace.isabelle.spigot.governator.IsabelleSpigotExtension;
+import de.d3adspace.isabelle.spigot.annotation.PluginConfig;
 import org.bukkit.configuration.Configuration;
 
 /**
