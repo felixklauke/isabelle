@@ -1,5 +1,9 @@
 # isabelle
-Integrating minecraft spigot servers plugin lifecycle into Netflix' Governators lifecycle extensions and provide an effective framework featuring dependency injection, configuration mapping and some general governator features for spigot plugins.
+Integrating minecraft spigot servers plugin lifecycle into lifecycle extensions and provide an effective framework featuring dependency injection, configuration mapping and some general governator features for spigot plugins.
+
+Integrations:
+1. [Isabelle](https://github.com/FelixKlauke/isabelle) - My own dependency injection framework based on Guice
+2. [Governator](https://github.com/Netflix/governator) - A dependency injection framework based on Google developed by Netflix. In maintenance mode and therefor deprecated.
 
 # Status
 |             	| Build Status                                                                                                                                              	| Test Code Coverage                                                                                                                                               	|
@@ -80,5 +84,5 @@ You can find the corresponding full example source here:
 https://github.com/FelixKlauke/isabelle/blob/dev/isabelle-spigot-governator-example/src/main/java/de/d3adspace/isabelle/spigot/plugin/ExamplePlugin.java
 
 **Depdendency Injection**:
-As we use Governator and Guice under the hood we have a powerful dependency injection mechanism.
+As we use Governator/Isabelle and Guice under the hood we have a powerful dependency injection mechanism.
 
