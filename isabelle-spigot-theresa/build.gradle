@@ -8,7 +8,7 @@ shadowJar {
 }
 
 group 'de.d3adspace.isabelle'
-version '1.0.0'
+version '2.0.0'
 
 repositories {
     maven { url = "https://repository.klauke-enterprises.com/repository/maven-releases/" }
@@ -26,8 +26,8 @@ dependencies {
     /**
      * Spigot API
      */
-    compileOnly 'org.spigotmc:spigot-api:1.13.2-R0.1-SNAPSHOT'
-    testCompile 'org.spigotmc:spigot-api:1.13.2-R0.1-SNAPSHOT'
+    compileOnly 'org.spigotmc:spigot-api:1.14.2-R0.1-SNAPSHOT'
+    testCompile 'org.spigotmc:spigot-api:1.14.2-R0.1-SNAPSHOT'
 
     /**
      * The core module.
