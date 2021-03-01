@@ -30,7 +30,7 @@ dependencies {
     /**
      * Google guice
      */
-    compileOnly group: 'com.google.inject', name: 'guice', version: '4.2.2'
+    compileOnly group: 'com.google.inject', name: 'guice', version: '5.0.1'
 
     /**
      * The core module.
