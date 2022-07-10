@@ -27,7 +27,7 @@ dependencies {
     /**
      * Spigot API
      */
-    compileOnly 'org.spigotmc:spigot-api:1.14.2-R0.1-SNAPSHOT'
+    compileOnly 'org.spigotmc:spigot-api:1.19-R0.1-SNAPSHOT'
     testCompile 'org.spigotmc:spigot-api:1.14.2-R0.1-SNAPSHOT'
 
     /**
