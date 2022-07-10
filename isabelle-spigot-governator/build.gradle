@@ -33,7 +33,7 @@ dependencies {
     /**
      * Governator for dependency injection and life cycle support.
      */
-    compile group: 'com.netflix.governator', name: 'governator', version: '1.17.10'
+    compile group: 'com.netflix.governator', name: 'governator', version: '1.17.12'
 
     /**
      * The core module.
